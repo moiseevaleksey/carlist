@@ -9,6 +9,7 @@ class Search extends Component {
   render() {
     return (
       <input
+        type='search'
         onChange={this.findCar.bind(this)}
         ref={input => this.searchCarInput = input}>
       </input>

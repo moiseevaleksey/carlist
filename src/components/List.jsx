@@ -2,21 +2,21 @@ import  React, {Component} from 'react';
 import {connect} from 'react-redux';
 
 class List extends Component {
-  constructor(props) {
-    super(props);
-    this.deleteCar = this.deleteCar.bind(this);
-  }
-  deleteCar() {
+  deleteCar(a) {
+    console.log( a.target.constructor.name);
+    console.log(a.target.getAttribute('data-id'));
 
   }
 
   render() {
-    console.log(this.props.state);
     return (
       <div>
         <ul>
             {this.props.state.map(({id, name}) =>
-              <li key={id}>
+              <li key={id}
+                onClick={this.deleteCar.bind(this)}
+                ref={(li) => this.carToDelete = li }
+                data-id={id}>
                 {name}
               </li>)}
         </ul>

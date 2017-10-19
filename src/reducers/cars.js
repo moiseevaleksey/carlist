@@ -15,7 +15,7 @@ const initState = [{
         name: 'Mazda'
     },
     {
-        id: 5,
+        id: 9999999,
         name: 'Ferrari'
     }
 ];
