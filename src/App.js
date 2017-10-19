@@ -20,9 +20,7 @@ class App extends Component {
 
 export default connect(
   state => ({
-    state: state.cars.filter(car =>
-      car.toLowerCase().includes(state.filterCars.toLowerCase())
-    )
+    state: state.cars
   }),
   dispatch => ({})
 )(App);

@@ -11,6 +11,7 @@ class List extends Component {
   }
 
   render() {
+    console.log(this.props.state);
     return (
       <div>
         <ul>
@@ -28,10 +29,10 @@ class List extends Component {
 
 export default connect(
   state => ({
-    state: state.cars
+    state: state.cars.filter(car => car.toLowerCase().includes(state.filterCars.toLowerCase()))
   }),
   dispatch => ({
-    onCarDelete : (car) => {
+    onCarDelete: (car) => {
       dispatch({ type: 'DELETE_CAR', car})
     }
   })
