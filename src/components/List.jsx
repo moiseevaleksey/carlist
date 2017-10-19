@@ -15,13 +15,11 @@ class List extends Component {
     return (
       <div>
         <ul>
-            {this.props.state.map((carName, index) =>
-              <li key={index}>
-                <input type="checkbox" name="deleteItem" value={index}/>
-                {carName}
+            {this.props.state.map(({id, name}) =>
+              <li key={id}>
+                {name}
               </li>)}
         </ul>
-        <button type="button" onClick={this.deleteCar}>Delete Selected Items</button>
       </div>
     );
   }
@@ -29,11 +27,11 @@ class List extends Component {
 
 export default connect(
   state => ({
-    state: state.cars.filter(car => car.toLowerCase().includes(state.filterCars.toLowerCase()))
+    state: state.cars.filter(car => car.name.toLowerCase().includes(state.filterCars.toLowerCase()))
   }),
   dispatch => ({
-    onCarDelete: (car) => {
-      dispatch({ type: 'DELETE_CAR', car})
+    onCarDelete: (carName) => {
+      dispatch({ type: 'DELETE_CAR', carName})
     }
   })
 )(List);
