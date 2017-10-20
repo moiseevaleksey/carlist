@@ -2,10 +2,8 @@ import  React, {Component} from 'react';
 import {connect} from 'react-redux';
 
 class List extends Component {
-  deleteCar(a) {
-    console.log( a.target.constructor.name);
-    console.log(a.target.getAttribute('data-id'));
-
+  deleteCar(id) {
+    this.props.onCarDelete(id)
   }
 
   render() {
@@ -14,8 +12,7 @@ class List extends Component {
         <ul>
             {this.props.state.map(({id, name}) =>
               <li key={id}
-                onClick={this.deleteCar.bind(this)}
-                ref={(li) => this.carToDelete = li }
+                onClick={() => this.deleteCar(id)}
                 data-id={id}>
                 {name}
               </li>)}
@@ -30,8 +27,8 @@ export default connect(
     state: state.cars.filter(car => car.name.toLowerCase().includes(state.filterCars.toLowerCase()))
   }),
   dispatch => ({
-    onCarDelete: (carName) => {
-      dispatch({ type: 'DELETE_CAR', carName})
+    onCarDelete: (id) => {
+      dispatch({ type: 'DELETE_CAR', id})
     }
   })
 )(List);
