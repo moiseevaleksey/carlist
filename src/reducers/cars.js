@@ -15,11 +15,10 @@ const initState = [{
         name: 'Mazda'
     },
     {
-        id: 9999999,
+        id: 5,
         name: 'Ferrari'
     }
 ];
-
 
 export default function carList(state = initState, action) {
   if (action.type === 'ADD_CAR') {
@@ -29,6 +28,9 @@ export default function carList(state = initState, action) {
     return [ ...state,
       { id : maxId + 1, name : action.carName}
     ];
+  } else if (action.type === 'DELETE_CAR') {
+    let newState = state.filter((car) => car.id !== action.id);
+    return newState;
   }
   return state;
 }

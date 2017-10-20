@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux';
 
 import List from './components/List';
 import Input from './components/Input';
@@ -18,9 +17,4 @@ class App extends Component {
   }
 }
 
-export default connect(
-  state => ({
-    state: state.cars
-  }),
-  dispatch => ({})
-)(App);
+export default App;

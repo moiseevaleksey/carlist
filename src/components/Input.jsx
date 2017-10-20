@@ -3,10 +3,6 @@ import { connect } from 'react-redux';
 
 class Input extends Component {
 
-  shouldComponentUpdate() {
-    return false;
-  }
-  
   addCar() {
     this.props.onAddCar(this.carNameInpt.value);
   }
